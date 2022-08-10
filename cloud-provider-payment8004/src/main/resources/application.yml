@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: cloud-payment-provider # 注册到zookeeper注册中心服务别名
+    name: cloud-provider-payment # 注册到zookeeper注册中心服务别名
   cloud:
     zookeeper:
       connect-string: localhost:2181
