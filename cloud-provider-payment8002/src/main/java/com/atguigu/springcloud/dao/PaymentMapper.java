@@ -4,7 +4,7 @@ import com.atguigu.springcloud.entities.Payment;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface PaymentDao {
+public interface PaymentMapper {
 
     int create(Payment payment);
 
