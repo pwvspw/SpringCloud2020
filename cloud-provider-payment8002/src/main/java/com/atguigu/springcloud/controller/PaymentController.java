@@ -24,7 +24,7 @@ public class PaymentController {
 
         int i = paymentService.create(payment);
 
-        log.info("插入返回结果：{}", i);
+        log.info("插入结果：{}", i);
 
         if (i > 0) {
 
