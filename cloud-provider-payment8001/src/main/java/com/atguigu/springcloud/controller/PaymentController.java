@@ -40,7 +40,7 @@ public class PaymentController {
 
         if (payment != null) {
 
-            return new CommonResult<>(200, "查询成功");
+            return new CommonResult<>(200, "查询成功", payment);
 
         } else {
 

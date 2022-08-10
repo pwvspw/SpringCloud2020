@@ -9,14 +9,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommonResult<T> {
 
-    private int code;
+    private Integer code;
 
     private String message;
 
     private T data;
 
-    public CommonResult(int code, String message) {
+    public CommonResult(Integer code, String message) {
         this(code, message, null);
+    }
+
+    public CommonResult(T data) {
+        this(200, "操作成功", data);
     }
 
 }
