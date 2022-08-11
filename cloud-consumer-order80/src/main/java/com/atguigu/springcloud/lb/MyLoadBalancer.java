@@ -21,21 +21,33 @@ public class MyLoadBalancer implements LoadBalancer {
 
     /**
      * 负载均衡算法：轮询
+     * 用到了自旋锁
      */
     public final int getIncrement() {
 
         int current;
         int next;
 
-        do {
+        // do {
+        //
+        //     current = this.atomicInteger.get();
+        //
+        //     next = current >= Integer.MAX_VALUE ? 0 : current + 1;
+        //
+        // } while (!atomicInteger.compareAndSet(current, next));
+
+        for (;;) {
 
             current = this.atomicInteger.get();
 
             next = current >= Integer.MAX_VALUE ? 0 : current + 1;
 
-        } while (!atomicInteger.compareAndSet(current, next));
+            if (atomicInteger.compareAndSet(current, next)) {
+                return next;
+            }
 
-        return next;
+        }
+
     }
 
 }
