@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class OrderConsulController {
 
-
     public static final String INVOKE_URL = "http://cloud-provider-payment";
 
     @Autowired
