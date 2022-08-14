@@ -1,0 +1,9 @@
+server:
+  port: 9527
+
+eureka:
+  client:
+    service-url: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
