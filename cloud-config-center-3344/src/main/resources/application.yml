@@ -13,10 +13,10 @@ spring:
             - springcloud-config
       label: master
 
-  #RabbitMQ相关配置
+  #RabbitMQ相关配置（15672是web管理界面的端口，5672是MQ访问的端口）
   rabbitmq:
     host: localhost
-    port: 15672
+    port: 5672
     username: guest
     password: guest
 
