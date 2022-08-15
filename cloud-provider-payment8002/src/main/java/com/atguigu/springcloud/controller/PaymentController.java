@@ -41,6 +41,8 @@ public class PaymentController {
     @GetMapping("/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
 
+        log.info("cloud provider payment get, id: {}", id);
+
         Payment payment = paymentService.getPaymentById(id);
 
         if (payment != null) {
@@ -57,6 +59,7 @@ public class PaymentController {
 
     @GetMapping("/payment/lb")
     public String getPaymentLB() {
+        log.info("cloud provider payment get, server port: {}", serverPort);
         return serverPort;
     }
 
