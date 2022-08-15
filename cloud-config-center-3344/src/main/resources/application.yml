@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-config-center
+    name: cloud-config-center # 注册进 Eureka 服务器的微服务名
   cloud:
     config:
       server:
@@ -13,7 +13,21 @@ spring:
             - springcloud-config
       label: master
 
+  #RabbitMQ相关配置
+  rabbitmq:
+    host: localhost
+    port: 15672
+    username: guest
+    password: guest
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka
+
+#RabbitMQ相关配置，暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
