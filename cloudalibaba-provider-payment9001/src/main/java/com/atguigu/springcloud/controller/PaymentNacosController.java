@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PaymentController {
+public class PaymentNacosController {
 
     @Value("${server.port}")
     private String serverPort;
