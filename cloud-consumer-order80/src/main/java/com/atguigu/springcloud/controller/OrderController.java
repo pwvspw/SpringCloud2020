@@ -48,6 +48,9 @@ public class OrderController {
         return restTemplate.getForObject(PAYMENT_SERVER_URL + "/payment/get/" + id, CommonResult.class);
     }
 
+    /**
+     * 使用自定义负载均衡算法
+     */
     @GetMapping("/consumer/payment/lb")
     public String getPaymentLB() {
 
@@ -60,6 +63,14 @@ public class OrderController {
         URI uri = instance.getUri();
 
         return restTemplate.getForObject(uri + "/payment/lb", String.class);
+    }
+
+    /**
+     * zipkin + sleuth 实现请求链路跟踪
+     */
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin() {
+        return restTemplate.getForObject(PAYMENT_SERVER_URL + "/payment/zipkin", String.class);
     }
 
 }

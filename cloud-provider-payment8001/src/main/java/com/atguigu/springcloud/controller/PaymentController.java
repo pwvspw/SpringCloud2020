@@ -1,5 +1,6 @@
 package com.atguigu.springcloud.controller;
 
+import cn.hutool.core.util.IdUtil;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
@@ -95,6 +96,14 @@ public class PaymentController {
             e.printStackTrace();
         }
         return serverPort;
+    }
+
+    /**
+     * zipkin + sleuth 实现请求链路跟踪
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        return "Hi, i'm zipkin, welcome to my world, " + IdUtil.fastUUID();
     }
 
 }
