@@ -1,0 +1,20 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址作为服务注册中心
+    sentinel:
+      transport:
+        port: 8791 # 默认 8719 端口，假如被占用会自动从 8719 开始依次 +1 扫描 , 直至找到未被占用的端口
+        dashboard: localhost:8080 # 配置 Sentinel dashboard 地址
+
+
+
+# 消费者将要去访问的微服务名称 ( 注册成功进 nacos 的微服务提供者 )
+service-url:
+  nacos-user-service: http://nacos-payment-provider
