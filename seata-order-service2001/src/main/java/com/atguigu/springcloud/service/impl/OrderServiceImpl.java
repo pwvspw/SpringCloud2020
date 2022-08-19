@@ -5,6 +5,7 @@ import com.atguigu.springcloud.mapper.OrderMapper;
 import com.atguigu.springcloud.service.AccountService;
 import com.atguigu.springcloud.service.OrderService;
 import com.atguigu.springcloud.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
      * 简单说：下订单->扣库存->减余额->改状态
      */
     @Override
-    // @GlobalTransactional(name = "fsp-create-order", rollbackFor = Exception.class)
+    @GlobalTransactional(name = "fsp-create-order", rollbackFor = Exception.class)
     public void create(Order order) {
 
         log.info("----->开始新建订单");
@@ -48,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
 
         //4 修改订单状态，从零到1,1代表已经完成
         log.info("----->修改订单状态开始");
-        orderMapper.update(order.getUserId(), 0);
+        orderMapper.update(order.getId(), 0);
         log.info("----->修改订单状态结束");
 
         log.info("----->下订单结束了，O(∩_∩)O哈哈~");

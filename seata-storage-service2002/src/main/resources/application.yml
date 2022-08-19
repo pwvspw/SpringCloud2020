@@ -11,11 +11,31 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+        namespace: 4efe54e5-61f6-491f-94c3-650a4b3db877
+        group: SEATA_GROUP
+      config:
+        server-addr: localhost:8848
+        namespace: 4efe54e5-61f6-491f-94c3-650a4b3db877
+        group: SEATA_GROUP
+        file-extension: yml
+
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seata_storage
     username: root
     password: 123456
+
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.cloud.alibaba.seata.tx-service-group}
+  service:
+    vgroup-mapping:
+      fsp_tx_group: default
+    grouplist:
+      default: localhost:8091
+
 
 logging:
   level:

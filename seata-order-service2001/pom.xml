@@ -18,17 +18,28 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
+        <!--分布式事务 -->
+        <!--移除alibaba-seata自带的seata-spring-boot-starter，因为自带的版本太低 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>io.seata</groupId>
+                    <artifactId>seata-spring-boot-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.seata</groupId>
                     <artifactId>seata-all</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <!--添加seata-spring-boot-starter依赖，版本需要与服务端版本相对应，此版本使用1.5.2 -->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>1.5.2</version>
+        </dependency>
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-all</artifactId>

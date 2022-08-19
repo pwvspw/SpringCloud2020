@@ -12,9 +12,9 @@
         <result column="status" property="status" jdbcType="INTEGER"/>
     </resultMap>
 
-    <insert id="create">
-        INSERT INTO seata_order.t_order (id, user_id, product_id, count, money, status)
-        VALUES (NULL, #{userId}, #{productId}, #{count}, #{money}, 0);
+    <insert id="create" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO seata_order.t_order (user_id, product_id, count, money, status)
+        VALUES (#{userId}, #{productId}, #{count}, #{money}, 0);
     </insert>
 
     <update id="update">
